@@ -1,0 +1,104 @@
+body {
+    background-color: #000000;
+    color: #FFFFFF; /* Set text color to white for better contrast on black background */
+    font-family: "Electrolize", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.6; /* Set line height for better readability */
+}
+
+header h1 {
+    font-family: "Nabla", sans-serif;
+}
+
+header, nav, main, footer {
+    text-align: center;
+}
+
+nav a {
+    display: inline-block;
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: #00FF00;
+    text-decoration: none; /* Remove underline from links */
+}
+
+nav a:hover {
+    color: #fff;
+    background-color: #173f73;
+    font-size: 2rem;
+    border-bottom: 2px solid orange;
+}
+
+main {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    gap: 2rem;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+}
+
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #111111; /* Darker background for footer */
+    color: #AAAAAA; /* Lighter text color for footer */
+    font-size: 0.75rem; /* make the text smaller and more subtle */
+}
+
+footer img.footer-logo {
+    max-width: 200px; /* Limit the width of the footer logo */
+    height: auto; /* Maintain the aspect ratio of the logo */
+    border-radius: 8px; /* Add rounded corners to the footer logo */
+}
+
+nav a.active {
+    color: #fff;
+    font-size: 2rem;
+    border-bottom: 2px solid orange;
+}
+
+#about-main {
+    display: block; /* Override the default flex display for the about section */
+    margin: 0 auto; /* Center the about section horizontally */
+}
+
+#table-header {
+    background-color: #173f73; /* Dark blue background for the table header */
+    color: #FFFFFF; /* White text color for the table header */
+}
+
+.table-row {
+    background-color: #f2f2f2; /* Light gray background for table rows */
+    color: #173f73; /* Dark blue text color for table rows */
+}
+
+table {
+    border-collapse: collapse; /* Collapse table borders */
+    margin-bottom: 2rem; /* Add space below the table */
+    width: 75%;
+}
+
+th, td {
+    border: 1px solid #dbe4f0; /* Add a border to the table, header cells and dta cells */
+    padding: 0.5rem; /* Add padding to cells for better readability */
+    text-align: left; /* Align text to the left */
+}
+
+/* Add styling for the interests list */
+.styled-list {
+    list-style-type: none; /* No bullets for the list */
+    padding-left: 0; /* No left padding for the list items */
+}
+
+.styled-list li {
+    margin-bottom: 0.5rem; /* Add some space between list items */
+}
+
+iframe {
+    display: block;
+    width: min(100%, 40rem);
+    min-height: 40rem;
+    height: 1200px; /* Increase or decrease to fit the whole form */
+    margin: 0 auto;
+    border: 1px solid #dbe4f0;
+}
