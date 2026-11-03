@@ -5,56 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Operating-System Families</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alien+Block&family=Electrolize&family=Nabla&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Operating-System Families</h1>
-    <nav>
-        <a href="index.html">Overview</a> |
-        <a href="about.html">How It Works</a> |
-        <a href="contact.html" class="active">OS Families</a> |
-        <a href="history.html">History</a>
-    </nav>
+    <header>
+        <p class="site-name">Operating Systems</p>
+        <nav aria-label="Main navigation">
+            <a href="index.html">Overview</a> |
+            <a href="about.html">How It Works</a> |
+            <a href="contact.html" class="active">OS Families</a> |
+            <a href="history.html">History</a>
+        </nav>
+    </header>
 
-    <p>Operating systems are designed for different devices and needs. Here are several common categories.</p>
+    <main>
+        <h1>Operating-System Families</h1>
 
-    <figure class="page-graphic">
-        <img src="img/os-families.svg" alt="Illustration of desktop, mobile, server, and embedded operating systems">
-        <figcaption>Operating systems are designed for computers with different roles.</figcaption>
-    </figure>
+        <p>Operating systems are designed for different devices and needs. Here are several common categories.</p>
 
-    <section class="family-grid" aria-label="Operating-system categories">
-    <article class="family-card">
-    <h2>Desktop and laptop systems</h2>
-    <p>These systems support general-purpose computing, including browsing, creative work, and software development. Examples include Windows, macOS, and Linux.</p>
-    </article>
+        <section class="family-grid" aria-label="Operating-system categories">
+        <article class="family-card">
+        <img class="family-image" src="img/os-desktop.svg" alt="Desktop computer">
+        <h2>Desktop and laptop systems</h2>
+        <p>These systems support general-purpose computing, including browsing, creative work, and software development. Examples include Windows, macOS, and Linux.</p>
+        </article>
 
-    <article class="family-card">
-    <h2>Mobile systems</h2>
-    <p>Mobile operating systems are designed for phones and tablets. They focus on touch input, battery life, wireless connections, and apps. Examples include Android and iOS.</p>
-    </article>
+        <article class="family-card">
+        <img class="family-image" src="img/os-mobile.svg" alt="Smartphone">
+        <h2>Mobile systems</h2>
+        <p>Mobile operating systems are designed for phones and tablets. They focus on touch input, battery life, wireless connections, and apps. Examples include Android and iOS.</p>
+        </article>
 
-    <article class="family-card">
-    <h2>Server systems</h2>
-    <p>Server operating systems provide services such as websites, file storage, and databases. They often run without a desktop interface. Examples include Linux and Windows Server.</p>
-    </article>
+        <article class="family-card">
+        <img class="family-image" src="img/os-server.svg" alt="Server rack">
+        <h2>Server systems</h2>
+        <p>Server operating systems provide services such as websites, file storage, and databases. They often run without a desktop interface. Examples include Linux and Windows Server.</p>
+        </article>
 
-    <article class="family-card">
-    <h2>Embedded and real-time systems</h2>
-    <p>Embedded operating systems run inside dedicated devices such as appliances and vehicles. Some real-time systems are designed to respond to events within strict time limits.</p>
-    </article>
-    </section>
+        <article class="family-card">
+        <img class="family-image" src="img/os-embedded.svg" alt="Embedded device controller">
+        <h2>Embedded and real-time systems</h2>
+        <p>Embedded operating systems run inside dedicated devices such as appliances and vehicles. Some real-time systems are designed to respond to events within strict time limits.</p>
+        </article>
+        </section>
 
-    <section>
-    <h2>Quick comparison</h2>
-    <table>
-        <tr><th>Category</th><th>Common priority</th><th>Typical interaction</th></tr>
-        <tr><td>Desktop</td><td>Versatility and productivity</td><td>Keyboard, mouse, and display</td></tr>
-        <tr><td>Mobile</td><td>Touch, battery, and connectivity</td><td>Touchscreen and sensors</td></tr>
-        <tr><td>Server</td><td>Reliability and serving requests</td><td>Remote administration</td></tr>
-        <tr><td>Embedded</td><td>Dedicated tasks and efficiency</td><td>Often built into another device</td></tr>
-    </table>
-    </section>
+        <section>
+        <h2>Quick comparison</h2>
+        <table>
+            <tr><th>Category</th><th>Common priority</th><th>Typical interaction</th></tr>
+            <tr><td>Desktop</td><td>Versatility and productivity</td><td>Keyboard, mouse, and display</td></tr>
+            <tr><td>Mobile</td><td>Touch, battery, and connectivity</td><td>Touchscreen and sensors</td></tr>
+            <tr><td>Server</td><td>Reliability and serving requests</td><td>Remote administration</td></tr>
+            <tr><td>Embedded</td><td>Dedicated tasks and efficiency</td><td>Often built into another device</td></tr>
+        </table>
+        </section>
 
-    <p><a href="history.html">Next: explore a brief history</a></p>
+        <section class="book-source">
+            <h2>Book source</h2>
+            <p>For further reading: <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a> by Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau.</p>
+        </section>
+        <p><a href="history.html">Next: explore a brief history</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Richard Crook. All rights reserved.</p>
+        <p>This site is for academic purposes only.</p>
+        <p>CST 336 Internet Programming</p>
+        <img class="footer-logo" src="https://csumb.edu/media/csumb/legacy/legacy-site-images/section-editors/university-communications/updated-branding/Logo_Primary-Full-color.jpg" alt="CSUMB Logo">
+    </footer>
 </body>
 </html>

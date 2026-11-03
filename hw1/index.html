@@ -5,38 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Operating Systems | Overview</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alien+Block&family=Electrolize&family=Nabla&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Operating Systems</h1>
-    <nav>
-        <a href="index.html" class="active">Overview</a> |
-        <a href="about.html">How It Works</a> |
-        <a href="contact.html">OS Families</a> |
-        <a href="history.html">History</a>
-    </nav>
+    <header>
+        <p class="site-name">Operating Systems</p>
+        <nav aria-label="Main navigation">
+            <a href="index.html" class="active">Overview</a> |
+            <a href="about.html">How It Works</a> |
+            <a href="contact.html">OS Families</a> |
+            <a href="history.html">History</a>
+        </nav>
+    </header>
 
-    <figure class="page-graphic">
-        <img src="img/os-overview.svg" alt="Diagram showing the operating system between applications and computer hardware">
-        <figcaption>The operating system connects applications with the computer's hardware.</figcaption>
-    </figure>
+    <main>
+        <h1>Operating Systems Overview</h1>
 
-    <h2>The software behind your computer</h2>
-    <p>An operating system turns computer hardware into a system people can use. It works between applications and the physical machine, coordinating resources and providing services that programs need.</p>
+        <figure class="page-graphic">
+            <img src="img/os-overview.svg" alt="Diagram showing the operating system between applications and computer hardware">
+            <figcaption>The operating system connects applications with the computer's hardware.</figcaption>
+        </figure>
 
-    <h2>What does an operating system do?</h2>
-    <h3>Shares computer resources</h3>
-    <p>The operating system coordinates the processor, memory, storage, and connected devices so programs can use them.</p>
+        <h2>The software behind your computer</h2>
+        <p>An operating system turns computer hardware into a system people can use. It works between applications and the physical machine, coordinating resources and providing services that programs need.</p>
 
-    <h3>Lets people interact with computers</h3>
-    <p>A graphical desktop, command line, or touchscreen gives people a way to tell a computer what to do.</p>
+        <h2>What does an operating system do?</h2>
+        <h3>Shares computer resources</h3>
+        <p>The operating system coordinates the processor, memory, storage, and connected devices so programs can use them.</p>
 
-    <h3>Provides a foundation for applications</h3>
-    <p>Applications rely on operating-system services instead of having to manage every hardware detail themselves.</p>
+        <h3>Lets people interact with computers</h3>
+        <p>A graphical desktop, command line, or touchscreen gives people a way to tell a computer what to do.</p>
 
-    <aside class="note">
-        <h2>Why it matters</h2>
-        <p>Without an operating system, every application would need to know how to operate each kind of hardware on its own.</p>
-    </aside>
-    <p><a href="about.html">Next: learn how an operating system works</a></p>
+        <h3>Provides a foundation for applications</h3>
+        <p>Applications rely on operating-system services instead of having to manage every hardware detail themselves.</p>
+
+        <aside class="note">
+            <h2>Why it matters</h2>
+            <p>Without an operating system, every application would need to know how to operate each kind of hardware on its own.</p>
+        </aside>
+        <section class="book-source">
+            <h2>Book source</h2>
+            <p>For further reading: <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a> by Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau.</p>
+        </section>
+        <p><a href="about.html">Next: learn how an operating system works</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Richard Crook. All rights reserved.</p>
+        <p>This site is for academic purposes only.</p>
+        <p>CST 336 Internet Programming</p>
+        <img class="footer-logo" src="https://csumb.edu/media/csumb/legacy/legacy-site-images/section-editors/university-communications/updated-branding/Logo_Primary-Full-color.jpg" alt="CSUMB Logo">
+    </footer>
 </body>
 </html>

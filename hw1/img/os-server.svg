@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 110" role="img" aria-labelledby="title">
+  <title id="title">Server rack</title>
+  <rect width="180" height="110" rx="12" fill="#f2f6f8"/>
+  <rect x="43" y="10" width="94" height="90" rx="7" fill="#fff" stroke="#174f78" stroke-width="4"/>
+  <g fill="#dcebf4" stroke="#174f78" stroke-width="2">
+    <rect x="52" y="19" width="76" height="20" rx="3"/><rect x="52" y="45" width="76" height="20" rx="3"/><rect x="52" y="71" width="76" height="20" rx="3"/>
+  </g>
+  <g fill="#174f78"><circle cx="63" cy="29" r="3"/><circle cx="63" cy="55" r="3"/><circle cx="63" cy="81" r="3"/></g>
+  <g stroke="#174f78" stroke-width="2"><path d="M74 29h43M74 55h43M74 81h43"/></g>
+</svg>

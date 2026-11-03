@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 110" role="img" aria-labelledby="title">
+  <title id="title">Desktop computer</title>
+  <rect width="180" height="110" rx="12" fill="#f2f6f8"/>
+  <rect x="38" y="18" width="104" height="63" rx="6" fill="#fff" stroke="#174f78" stroke-width="4"/>
+  <rect x="46" y="26" width="88" height="47" rx="2" fill="#dcebf4"/>
+  <path d="M90 81v13m-24 0h48" fill="none" stroke="#174f78" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="90" cy="50" r="11" fill="#174f78"/>
+</svg>
