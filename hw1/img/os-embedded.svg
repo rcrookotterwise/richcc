@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 110" role="img" aria-labelledby="title">
+  <title id="title">Embedded device controller</title>
+  <rect width="180" height="110" rx="12" fill="#f2f6f8"/>
+  <rect x="48" y="18" width="84" height="74" rx="8" fill="#fff" stroke="#174f78" stroke-width="4"/>
+  <rect x="70" y="38" width="40" height="34" rx="4" fill="#dcebf4" stroke="#174f78" stroke-width="3"/>
+  <path d="M58 8v10m16-10v10m16-10v10m16-10v10m16-10v10M58 92v10m16-10v10m16-10v10m16-10v10m16-10v10M38 30h10m-10 16h10m-10 16h10m-10 16h10m84-48h10m-10 16h10m-10 16h10m-10 16h10" stroke="#174f78" stroke-width="3"/>
+  <circle cx="90" cy="55" r="7" fill="#174f78"/>
+</svg>

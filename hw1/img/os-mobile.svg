@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 110" role="img" aria-labelledby="title">
+  <title id="title">Smartphone</title>
+  <rect width="180" height="110" rx="12" fill="#f2f6f8"/>
+  <rect x="64" y="8" width="52" height="94" rx="10" fill="#fff" stroke="#174f78" stroke-width="4"/>
+  <rect x="71" y="20" width="38" height="65" rx="3" fill="#dcebf4"/>
+  <circle cx="90" cy="94" r="3" fill="#174f78"/>
+  <circle cx="90" cy="51" r="12" fill="#174f78"/>
+</svg>

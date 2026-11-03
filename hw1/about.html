@@ -5,37 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How an Operating System Works</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alien+Block&family=Electrolize&family=Nabla&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>How an Operating System Works</h1>
-    <nav>
-        <a href="index.html">Overview</a> |
-        <a href="about.html" class="active">How It Works</a> |
-        <a href="contact.html">OS Families</a> |
-        <a href="history.html">History</a>
-    </nav>
+    <header>
+        <p class="site-name">Operating Systems</p>
+        <nav aria-label="Main navigation">
+            <a href="index.html">Overview</a> |
+            <a href="about.html" class="active">How It Works</a> |
+            <a href="contact.html">OS Families</a> |
+            <a href="history.html">History</a>
+        </nav>
+    </header>
 
-    <figure class="page-graphic">
-        <img src="img/os-work.svg" alt="Diagram connecting process scheduling, memory, files, and devices to the operating system kernel">
-        <figcaption>The kernel coordinates several core operating-system responsibilities.</figcaption>
-    </figure>
+    <main>
+        <h1>How an Operating System Works</h1>
 
-    <p>An operating system coordinates the computer. It gives programs the resources they need while helping the whole system stay responsive and organized.</p>
+        <figure class="page-graphic">
+            <img src="img/os-work.svg" alt="Diagram connecting process scheduling, memory, files, and devices to the operating system kernel">
+            <figcaption>The kernel coordinates several core operating-system responsibilities.</figcaption>
+        </figure>
 
-    <h2>Scheduling processes</h2>
-    <p>The operating system decides which program gets processor time and when. It switches between tasks quickly, making it seem as though many programs run at once.</p>
+        <p>An operating system coordinates the computer. It gives programs the resources they need while helping the whole system stay responsive and organized.</p>
 
-    <h2>Managing memory</h2>
-    <p>Each running program needs space for its data. The operating system tracks memory use and helps prevent programs from interfering with one another.</p>
+        <h2>Scheduling processes</h2>
+        <p>The operating system decides which program gets processor time and when. It switches between tasks quickly, making it seem as though many programs run at once.</p>
 
-    <h2>Organizing files</h2>
-    <p>Directories and file systems organize stored information. The operating system helps create, find, and protect files.</p>
+        <h2>Managing memory</h2>
+        <p>Each running program needs space for its data. The operating system tracks memory use and helps prevent programs from interfering with one another.</p>
 
-    <h2>Communicating with devices</h2>
-    <p>Device drivers help the operating system communicate with hardware such as keyboards, screens, printers, and network adapters.</p>
+        <h2>Organizing files</h2>
+        <p>Directories and file systems organize stored information. The operating system helps create, find, and protect files.</p>
 
-    <h2>The kernel</h2>
-    <p>The kernel is the central part of an operating system. It handles essential tasks such as managing hardware access and coordinating running programs.</p>
-    <p><a href="contact.html">Next: compare operating-system families</a></p>
+        <h2>Communicating with devices</h2>
+        <p>Device drivers help the operating system communicate with hardware such as keyboards, screens, printers, and network adapters.</p>
+
+        <h2>The kernel</h2>
+        <p>The kernel is the central part of an operating system. It handles essential tasks such as managing hardware access and coordinating running programs.</p>
+        <section class="book-source">
+            <h2>Book source</h2>
+            <p>For further reading: <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a> by Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau.</p>
+        </section>
+        <p><a href="contact.html">Next: compare operating-system families</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Richard Crook. All rights reserved.</p>
+        <p>This site is for academic purposes only.</p>
+        <p>CST 336 Internet Programming</p>
+        <img class="footer-logo" src="https://csumb.edu/media/csumb/legacy/legacy-site-images/section-editors/university-communications/updated-branding/Logo_Primary-Full-color.jpg" alt="CSUMB Logo">
+    </footer>
 </body>
 </html>
