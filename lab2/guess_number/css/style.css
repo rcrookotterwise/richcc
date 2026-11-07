@@ -58,3 +58,16 @@ input {
 #guesses {
   color: #713db5;
 }
+
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    color: #AAAAAA; /* Lighter text color for footer */
+    font-size: 0.75rem; /* make the text smaller and more subtle */
+}
+
+footer img.footer-logo {
+    max-width: 200px; /* Limit the width of the footer logo */
+    height: auto; /* Maintain the aspect ratio of the logo */
+    border-radius: 8px; /* Add rounded corners to the footer logo */
+}
