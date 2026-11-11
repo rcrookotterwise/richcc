@@ -1,0 +1,136 @@
+:root {
+    --primary-color: #2563eb;
+    --dark-color: #1e293b;
+    --light-background: #eff6ff;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #dbeafe, #f8fafc);
+    color: var(--dark-color);
+    font-family: Arial, sans-serif;
+}
+
+.signup-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.signup-card {
+    width: 100%;
+    max-width: 760px;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 2.5rem rgba(30, 41, 59, 0.15);
+}
+
+.signup-card h1 {
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+    font-weight: 700;
+}
+
+.signup-subtitle {
+    margin-bottom: 2rem;
+    color: #64748b;
+}
+
+.form-label {
+    margin-bottom: 0.4rem;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.form-control {
+    min-height: 46px;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.6rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.2);
+}
+
+.form-select {
+    min-height: 46px;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.6rem;
+}
+
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.2);
+}
+
+.form-check {
+    margin-right: 1.25rem;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.lookup-results {
+    padding: 1rem;
+    background-color: var(--light-background);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0.5rem;
+}
+
+.lookup-results p {
+    margin-bottom: 0.35rem;
+    color: #475569;
+}
+
+.lookup-results span {
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+#usernameError,
+#passwordError {
+    display: block;
+    min-height: 1.25rem;
+    margin-top: 0.35rem;
+}
+
+#sPwd {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--primary-color);
+}
+
+.btn-primary {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.6rem;
+    background-color: var(--primary-color);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    color: #AAAAAA; /* Lighter text color for footer */
+    font-size: 0.75rem; /* make the text smaller and more subtle */
+    text-align: center;
+}
+
+footer img.footer-logo {
+    max-width: 200px; /* Limit the width of the footer logo */
+    height: auto; /* Maintain the aspect ratio of the logo */
+    border-radius: 8px; /* Add rounded corners to the footer logo */
+}
