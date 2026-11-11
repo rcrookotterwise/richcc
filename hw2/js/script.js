@@ -5,6 +5,7 @@ let score = 0;
 let goodScore = 80;
 
 displayQ4Choices();
+displayQ7Choices();
 
 let attempts = localStorage.getItem("total_attempts");
 
@@ -316,21 +317,44 @@ function displayQ4Choices() {
     "Delaware"
   ];
 
-  shuffleArray(q4ChoicesArray);
+  displayRadioChoices(
+    q4ChoicesArray,
+    "#q4Choices",
+    4
+  );
+}
+
+function displayQ7Choices() {
+  let q7ChoicesArray = [
+    "New York City",
+    "Washington, D.C.",
+    "Philadelphia",
+    "Los Angeles"
+  ];
+
+  displayRadioChoices(
+    q7ChoicesArray,
+    "#q7Choices",
+    7
+  );
+}
+
+function displayRadioChoices(radioChoicesArray, choicesContainerId, questionNumber) {
+  shuffleArray(radioChoicesArray);
 
   let choicesContainer =
-    document.querySelector("#q4Choices");
+    document.querySelector(choicesContainerId);
 
   choicesContainer.textContent = "";
 
-  for (let choice of q4ChoicesArray) {
+  for (let choice of radioChoicesArray) {
     let inputId =
       choice.toLowerCase().replaceAll(" ", "-");
 
     let input = document.createElement("input");
 
     input.type = "radio";
-    input.name = "q4";
+    input.name = `q${questionNumber}`;
     input.id = inputId;
     input.value = choice;
     input.className = "form-check-input";
