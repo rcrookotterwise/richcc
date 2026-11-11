@@ -13,3 +13,24 @@
 .incorrectAnswer {
     color: red;
 }
+
+footer {
+    margin-top: 24px;
+    padding: 10px 16px;
+    color: #111;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+footer p {
+    margin: 4px 0;
+}
+
+footer img.footer-logo {
+    display: block;
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    margin: 10px auto 0;
+    border: 0;
+}
