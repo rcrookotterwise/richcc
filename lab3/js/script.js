@@ -16,12 +16,14 @@ async function displayCity() {
     //the API returns false when the zip code is not found, so we can check for that case before trying to access the city property
     if (data === false) {
       document.querySelector("#city").textContent = "Zip code not found";
+      document.querySelector("#city").className = "text-danger";
       document.querySelector("#latitude").textContent = "";
       document.querySelector("#longitude").textContent = "";
       return;
     }
 
     document.querySelector("#city").textContent = data.city;
+    document.querySelector("#city").className = "";
     document.querySelector("#latitude").textContent = data.latitude;
     document.querySelector("#longitude").textContent = data.longitude;
 
@@ -107,7 +109,7 @@ async function checkUsername() {
 
   if (username.length === 0) {
     usernameError.textContent = "Username required";
-    usernameError.style.color = "red";
+    usernameError.className = "text-danger";
     return false;
   }
 
@@ -117,11 +119,11 @@ async function checkUsername() {
 
   if (data.available) {
     usernameError.textContent = "Username available!";
-    usernameError.style.color = "green";
+    usernameError.className = "text-success";
     return true;
   } else {
     usernameError.textContent = "Username taken";
-    usernameError.style.color = "red";
+    usernameError.className = "text-danger";
     return false;
   }
 }
@@ -138,7 +140,7 @@ async function validateForm(event) {
 
   if (username.length === 0) {
     usernameError.textContent = "Username required";
-    usernameError.style.color = "red";
+    usernameError.className = "text-danger";
     isValid = false;
   } else {
     let usernameAvailable = await checkUsername();
@@ -156,15 +158,15 @@ async function validateForm(event) {
 
   if (password.length === 0) {
     passwordError.textContent = "Password required";
-    passwordError.style.color = "red";
+    passwordError.className = "text-danger";
     isValid = false;
   } else if (password.length < 6) {
     passwordError.textContent = "Password must be at least 6 characters";
-    passwordError.style.color = "red";
+    passwordError.className = "text-danger";
     isValid = false;
   } else if (password !== passwordAgain) {
     passwordError.textContent = "Passwords do not match";
-    passwordError.style.color = "red";
+    passwordError.className = "text-danger";
     isValid = false;
   }
 
