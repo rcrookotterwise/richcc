@@ -1,374 +1,296 @@
-document.querySelector("#submitQuiz")
-  .addEventListener("click", gradeQuiz);
+// capture some elements from the DOM 
+const form = document.querySelector('#adventure-form');
+const loading = document.querySelector('#loading');
+const loadingDots = document.querySelector('#loading-dots');
+const validationMessage = document.querySelector('#validation-message');
+let loadingTimer;
 
-let score = 0;
-let goodScore = 80;
+// define constants
+const weatherCodes = { 0:'Clear sky'
+                      , 1:'Mainly clear'
+                      , 2:'Partly cloudy'
+                      , 3:'Overcast'
+                      , 45:'Foggy'
+                      , 48:'Rime fog'
+                      , 51:'Light drizzle'
+                      , 53:'Drizzle'
+                      , 55:'Heavy drizzle'
+                      , 61:'Light rain'
+                      , 63:'Rain'
+                      , 65:'Heavy rain'
+                      , 71:'Light snow'
+                      , 73:'Snow'
+                      , 75:'Heavy snow'
+                      , 80:'Rain showers'
+                      , 81:'Rain showers'
+                      , 82:'Heavy showers'
+                      , 95:'Thunderstorm' };
 
-displayQ4Choices();
-displayQ7Choices();
+// define event handlers
+form.addEventListener('submit', submitForm);
 
-let attempts = localStorage.getItem("total_attempts");
+// start the page after the character choices have loaded
+startPage();
 
-if (attempts === null) {
-  attempts = 0;
-} else {
-  attempts = Number(attempts);
+// ----- functions -----
+async function startPage() {
+  await loadCharacters();
+
+  // Select Rick Sanchez as the default character.
+  // The option values are character IDs, and Rick's ID is 1.
+  document.querySelector('#character-input').value = '1';
+
+  // Load the first report automatically.
+  form.dispatchEvent(new Event('submit', {
+    bubbles: true,
+    cancelable: true
+  }));
 }
 
-document.querySelector("#totalAttempts").textContent =
-  `Total Attempts: ${attempts}`;
+// handle the form submission
+async function submitForm(event) {
+  event.preventDefault();
+  validationMessage.textContent = '';
 
-function isFormValid() {
-  let validationFbk =
-    document.querySelector("#validationFbk");
+  // get form values
+  const location = document.querySelector('#location-input').value.trim();
+  const character = document.querySelector('#character-input').value.trim();
+  const days = Number(document.querySelector('#days-input').value);
 
-  let q1Response =
-    document.querySelector("#q1").value.trim();
-
-  let q2Response =
-    document.querySelector("#q2").value;
-
-  let q3Answered =
-    document.querySelector("#jackson").checked ||
-    document.querySelector("#franklin").checked ||
-    document.querySelector("#jefferson").checked ||
-    document.querySelector("#roosevelt").checked;
-
-  let q4Answered =
-    document.querySelector("input[name='q4']:checked");
-
-  let q5Response =
-    document.querySelector("#q5").value;
-
-  let q6Response =
-    document.querySelector("#q6").value.trim();
-
-  let q7Answered =
-    document.querySelector("input[name='q7']:checked");
-
-  let q8Answered =
-    document.querySelector("#yellowstone").checked ||
-    document.querySelector("#yosemite").checked ||
-    document.querySelector("#disneyland").checked;
-
-  let q9Response =
-    document.querySelector("#q9").value;
-
-  let q10Response =
-    document.querySelector("#q10").value;
-
-  if (q1Response === "") {
-    validationFbk.textContent =
-      "Question 1 was not answered";
-    return false;
-  }
-
-  if (q2Response === "") {
-    validationFbk.textContent =
-      "Question 2 was not answered";
-    return false;
-  }
-
-  if (!q3Answered) {
-    validationFbk.textContent =
-      "Question 3 was not answered";
-    return false;
-  }
-
-  if (q4Answered === null) {
-    validationFbk.textContent =
-      "Question 4 was not answered";
-    return false;
-  }
-
-  if (q5Response === "") {
-    validationFbk.textContent =
-      "Question 5 was not answered";
-    return false;
-  }
-
-  if (q6Response === "") {
-    validationFbk.textContent =
-      "Question 6 was not answered";
-    return false;
-  }
-
-  if (q7Answered === null) {
-    validationFbk.textContent =
-      "Question 7 was not answered";
-    return false;
-  }
-
-  if (!q8Answered) {
-    validationFbk.textContent =
-      "Question 8 was not answered";
-    return false;
-  }
-
-  if (q9Response === "") {
-    validationFbk.textContent =
-      "Question 9 was not answered";
-    return false;
-  }
-
-  if (q10Response === "") {
-    validationFbk.textContent =
-      "Question 10 was not answered";
-    return false;
-  }
-
-  validationFbk.textContent = "";
-  return true;
-}
-
-function setMarkImage(index, imageName, altText) {
-  let markContainer =
-    document.querySelector(`#markImg${index}`);
-
-  markContainer.textContent = "";
-
-  let img = document.createElement("img");
-
-  img.src = `img/${imageName}`;
-  img.alt = altText;
-
-  markContainer.appendChild(img);
-}
-
-function rightAnswer(index) {
-  let feedback =
-    document.querySelector(`#q${index}Feedback`);
-
-  feedback.textContent = "Correct!";
-  feedback.className = "feedback correct";
-
-  setMarkImage(index, "checkmark.png", "Correct answer");
-
-  score += 10;
-}
-
-function wrongAnswer(index) {
-  let feedback =
-    document.querySelector(`#q${index}Feedback`);
-
-  feedback.textContent = "Incorrect!";
-  feedback.className = "feedback incorrect";
-
-  setMarkImage(index, "xmark.png", "Incorrect answer");
-}
-
-function gradeQuiz() {
-  console.log("Grading quiz...");
-
-  document.querySelector("#validationFbk")
-    .textContent = "";
-
-  if (!isFormValid()) {
+  // validate form values
+  if (location.length < 2 || character === '' || days < 1 || days > 90) {
+    validationMessage.textContent = 'Please enter a destination, choose a character, and select 1–90 days.';
     return;
   }
 
-  score = 0;
+  loading.classList.add('visible');
+  startLoadingAnimation();
+  document.querySelector('#report-title').textContent = location;
 
-  let q1Response = document
-    .querySelector("#q1")
-    .value
-    .trim()
-    .toLowerCase();
+  // fetch data
+  try {
+    const geo = await getCoordinates(location);
+    const characterData = await getCharacter(character);
+    const identity = await getIdentity();
+    const quakes = await getEarthquakes(geo.latitude, geo.longitude, days);
 
-  let q2Response =
-    document.querySelector("#q2").value;
+    await renderWeather(geo);
+    renderCharacter(characterData);
+    renderEarthquakes(quakes, days);
+    renderIdentity(identity);
 
-  if (q1Response === "sacramento") {
-    rightAnswer(1);
-  } else {
-    wrongAnswer(1);
-  }
-
-  if (q2Response === "mo") {
-    rightAnswer(2);
-  } else {
-    wrongAnswer(2);
-  }
-
-  if (
-    document.querySelector("#jefferson").checked &&
-    document.querySelector("#roosevelt").checked &&
-    !document.querySelector("#jackson").checked &&
-    !document.querySelector("#franklin").checked
-  ) {
-    rightAnswer(3);
-  } else {
-    wrongAnswer(3);
-  }
-
-  let selectedQ4 =
-    document.querySelector("input[name='q4']:checked");
-
-  if (
-    selectedQ4 !== null &&
-    selectedQ4.value === "Rhode Island"
-  ) {
-    rightAnswer(4);
-  } else {
-    wrongAnswer(4);
-  }
-
-  let q5Response =
-    document.querySelector("#q5").value;
-
-  if (q5Response === "alaska") {
-    rightAnswer(5);
-  } else {
-    wrongAnswer(5);
-  }
-
-  let q6Response = document
-    .querySelector("#q6")
-    .value
-    .trim()
-    .toLowerCase();
-
-  if (q6Response === "florida") {
-    rightAnswer(6);
-  } else {
-    wrongAnswer(6);
-  }
-
-  let selectedQ7 =
-    document.querySelector("input[name='q7']:checked");
-
-  if (
-    selectedQ7 !== null &&
-    selectedQ7.value === "Washington, D.C."
-  ) {
-    rightAnswer(7);
-  } else {
-    wrongAnswer(7);
-  }
-
-  if (
-    document.querySelector("#yellowstone").checked &&
-    document.querySelector("#yosemite").checked &&
-    !document.querySelector("#disneyland").checked
-  ) {
-    rightAnswer(8);
-  } else {
-    wrongAnswer(8);
-  }
-
-  let q9Response =
-    document.querySelector("#q9").value;
-
-  if (q9Response === "arizona") {
-    rightAnswer(9);
-  } else {
-    wrongAnswer(9);
-  }
-
-  let q10Response =
-    document.querySelector("#q10").value;
-
-  if (q10Response === "50") {
-    rightAnswer(10);
-  } else {
-    wrongAnswer(10);
-  }
-
-  let totalScore =
-    document.querySelector("#totalScore");
-
-  totalScore.textContent =
-    `Total Score: ${score}/100`;
-
-  if (score > goodScore) {
-    totalScore.className =
-      "correctAnswer";
-
-    totalScore.textContent +=
-      " - Congratulations Magellan!";
-  } else {
-    totalScore.className =
-      "incorrectAnswer";
-  }
-
-  attempts++;
-
-  document.querySelector("#totalAttempts")
-    .textContent = `Total Attempts: ${attempts}`;
-
-  localStorage.setItem("total_attempts", attempts);
-}
-
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-
-    let temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+    const reportTime = new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    document.querySelector('#report-time').textContent = `REPORT GENERATED ${reportTime}`;
+  } catch (error) {
+    validationMessage.textContent = `We lost the signal: ${error.message} Please try again.`;
+  } finally {
+    stopLoadingAnimation();
+    loading.classList.remove('visible');
   }
 }
 
-function displayQ4Choices() {
-  let q4ChoicesArray = [
-    "Maine",
-    "Rhode Island",
-    "Maryland",
-    "Delaware"
-  ];
+// get the characters from the API and add them to the drop-down menu
+async function loadCharacters() {
+  // https://rickandmortyapi.com/documentation/#get-all-characters
+  const characterSelect = document.querySelector('#character-input');
+  const characterURL = 'https://rickandmortyapi.com/api/character';
 
-  displayRadioChoices(
-    q4ChoicesArray,
-    "#q4Choices",
-    4
-  );
-}
+  try {
+    //NOTE: This response is paginated. For simplicity we are only loading the first page, 20 characters.
+    const response = await fetch(characterURL);
 
-function displayQ7Choices() {
-  let q7ChoicesArray = [
-    "New York City",
-    "Washington, D.C.",
-    "Philadelphia",
-    "Los Angeles"
-  ];
+    if (!response.ok) {
+      throw new Error('character list could not be loaded.');
+    }
 
-  displayRadioChoices(
-    q7ChoicesArray,
-    "#q7Choices",
-    7
-  );
-}
+    const data = await response.json();
 
-function displayRadioChoices(radioChoicesArray, choicesContainerId, questionNumber) {
-  shuffleArray(radioChoicesArray);
+    characterSelect.innerHTML = '';
 
-  let choicesContainer =
-    document.querySelector(choicesContainerId);
+    for (let i = 0; i < data.results.length; i++) {
+      const character = data.results[i];
+      const option = document.createElement('option');
 
-  choicesContainer.textContent = "";
+      option.value = character.id;
+      option.textContent = character.name;
 
-  for (let choice of radioChoicesArray) {
-    let inputId =
-      choice.toLowerCase().replaceAll(" ", "-");
+      if (character.name === 'Rick Sanchez') {
+        option.selected = true;
+      }
 
-    let input = document.createElement("input");
+      characterSelect.appendChild(option);
+    }
 
-    input.type = "radio";
-    input.name = `q${questionNumber}`;
-    input.id = inputId;
-    input.value = choice;
-    input.className = "form-check-input";
-
-    let label = document.createElement("label");
-
-    label.htmlFor = inputId;
-    label.textContent = choice;
-    label.className = "form-check-label";
-
-    choicesContainer.appendChild(input);
-    choicesContainer.appendChild(label);
-    choicesContainer.appendChild(
-      document.createTextNode(" ")
-    );
+    characterSelect.disabled = false;
+  } catch (error) {
+    characterSelect.innerHTML = '<option value="">Characters unavailable</option>';
+    validationMessage.textContent = error.message;
   }
+}
+
+// get coordinates for a location
+async function getCoordinates(place) {
+  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(place)}&count=1&language=en&format=json`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('location lookup failed.');
+  }
+
+  const data = await response.json();
+
+  if (!data.results || data.results.length === 0) {
+    throw new Error('that destination was not found.');
+  }
+
+  return data.results[0];
+}
+
+// get character data
+async function getCharacter(id) {
+  const url = `https://rickandmortyapi.com/api/character/${encodeURIComponent(id)}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('no matching character was found.');
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+// get identity data
+async function getIdentity() {
+  const response = await fetch('https://fakerapi.it/api/v2/persons?_quantity=1');
+
+  if (!response.ok) {
+    throw new Error('identity generator is unavailable.');
+  }
+
+  const data = await response.json();
+  return data.data[0];
+}
+
+// get earthquake data
+async function getEarthquakes(latitude, longitude, days) {
+  const end = new Date();
+  const start = new Date(end.getTime() - days * 86400000);
+
+  const params = new URLSearchParams({
+    format: 'geojson',
+    latitude: latitude,
+    longitude: longitude,
+    maxradiuskm: '500',
+    starttime: start.toISOString(),
+    endtime: end.toISOString(),
+    minmagnitude: '2.5',
+    orderby: 'time',
+    limit: '6'
+  });
+
+  const response = await fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?${params}`);
+
+  if (!response.ok) {
+    throw new Error('seismic data is unavailable.');
+  }
+
+  return response.json();
+}
+
+// render weather data
+async function renderWeather(geo) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${geo.latitude}&longitude=${geo.longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto`;
+  const response = await fetch(url);
+  const data = await response.json();
+  const current = data.current;
+
+  let weatherDescription = weatherCodes[current.weather_code];
+  if (!weatherDescription) {
+    weatherDescription = 'Changing skies';
+  }
+
+  document.querySelector('#temperature').textContent = `${Math.round(current.temperature_2m)}°`;
+  document.querySelector('#weather-label').textContent = weatherDescription;
+  document.querySelector('#coordinates').textContent = `${geo.name}, ${geo.country_code} · ${geo.latitude.toFixed(2)}°, ${geo.longitude.toFixed(2)}°`;
+  document.querySelector('#wind').textContent = `${Math.round(current.wind_speed_10m)} mph`;
+  document.querySelector('#humidity').textContent = `${current.relative_humidity_2m}%`;
+  document.querySelector('#local-time').textContent = current.time.split('T')[1];
+}
+
+// render character data
+function renderCharacter(character) {
+  document.querySelector('#character-content').innerHTML = `
+    <img src="${character.image}" alt="Portrait of ${character.name}">
+    <div>
+      <h3>${character.name}</h3>
+      <p class="muted">${character.origin.name}</p>
+    </div>`;
+
+  document.querySelector('#character-meta').innerHTML = `
+    <span>${character.status.toUpperCase()}</span>
+    <span>${character.species.toUpperCase()}</span>
+    <span>${character.gender.toUpperCase()}</span>`;
+}
+
+// render earthquake data
+function renderEarthquakes(data, days) {
+  document.querySelector('#quake-count').textContent = data.metadata.count;
+  document.querySelector('#quake-window').textContent = days;
+
+  const quakeList = document.querySelector('#quake-list');
+
+  if (data.features.length === 0) {
+    quakeList.innerHTML = '<p class="muted">No significant earthquakes found nearby.</p>';
+    return;
+  }
+
+  let quakeHTML = '';
+  const earthquakesToShow = data.features.slice(0, 4);
+
+  for (let i = 0; i < earthquakesToShow.length; i++) {
+    const quake = earthquakesToShow[i];
+    quakeHTML += `
+      <div class="quake-item">
+        <strong>M ${quake.properties.mag.toFixed(1)}</strong>
+        <span>${quake.properties.place}</span>
+        <time>${formatDate(new Date(quake.properties.time))}</time>
+      </div>`;
+  }
+
+  quakeList.innerHTML = quakeHTML;
+}
+
+// render identity data
+function renderIdentity(person) {
+  document.querySelector('#identity-name').textContent = `${person.firstname} ${person.lastname}`;
+  document.querySelector('#identity-details').textContent = `${person.gender.toUpperCase()} · ${person.birthday} · ${person.address.city}, ${person.address.country}`;
+}
+
+// show zero, one, two, and three dots while the APIs are working
+function startLoadingAnimation() {
+  let numberOfDots = 0;
+  loadingDots.textContent = '';
+
+  loadingTimer = setInterval(function () {
+    numberOfDots = numberOfDots + 1;
+
+    if (numberOfDots > 3) {
+      numberOfDots = 0;
+    }
+
+    loadingDots.textContent = '.'.repeat(numberOfDots);
+  }, 500);
+}
+
+function stopLoadingAnimation() {
+  clearInterval(loadingTimer);
+  loadingDots.textContent = '';
+}
+
+// format a date
+function formatDate(date) {
+  return date.toLocaleDateString(undefined, { month:'short', day:'numeric' });
 }
