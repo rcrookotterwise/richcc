@@ -90,14 +90,20 @@ h1 {
   margin-top: 27px;
 }
 
-.api-pills span {
+.api-pills a {
   padding: 7px 10px;
   border: 1px solid var(--line);
   border-radius: 99px;
   color: var(--muted);
+  text-decoration: none;
   font:
     10px "DM Mono",
     monospace;
+}
+
+.api-pills a:hover {
+  color: var(--ink);
+  background: var(--line);
 }
 
 .control-panel {
@@ -244,6 +250,28 @@ h1 {
 .card-top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.api-pill {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid #dce1d9;
+  border-radius: 20px;
+  color: #aebbb1;
+  font: 9px "DM Mono", monospace;
+  text-decoration: none;
+}
+
+.api-pill:hover {
+  color: white;
+  background: #455149;
 }
 
 .card-icon {
