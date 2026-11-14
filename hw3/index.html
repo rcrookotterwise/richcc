@@ -29,10 +29,10 @@
         <h1>Pack your curiosity.<br><em>The universe is live.</em></h1>
         <p class="hero-copy">Pick a destination and a curious traveler. We’ll pull live weather, seismic activity, and a character dossier into one cosmic field report.</p>
         <div class="api-pills" aria-label="APIs used">
-            <span>USGS</span>
-            <span>OPEN-METEO</span>
-            <span>RICK &amp; MORTY</span>
-            <span>FAKER API</span>
+            <a href="https://earthquake.usgs.gov/fdsnws/event/1/" target="_blank" rel="noopener noreferrer">USGS</a>
+            <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">OPEN-METEO</a>
+            <a href="https://rickandmortyapi.com/documentation" target="_blank" rel="noopener noreferrer">RICK &amp; MORTY</a>
+            <a href="https://fakerapi.it/en" target="_blank" rel="noopener noreferrer">FAKER API</a>
         </div>
       </section>      
 
@@ -41,17 +41,17 @@
         <form id="adventure-form">
           <div class="form-grid">
             <label class="field field-wide">Destination
-              <input id="location-input" name="location" type="text" value="Monterey, CA" minlength="2" maxlength="60" required placeholder="Try: Monterey, CA">
+              <input id="location-input" name="location" type="text" value="Monterey, CA" placeholder="Try: Monterey, CA">
               <span class="field-hint">City, state, or country</span>
             </label>
             <label class="field">Character
-              <select id="character-input" name="character" required disabled>
+              <select id="character-input" name="character" disabled>
                 <option value="">Loading characters...</option>
               </select>
               <span class="field-hint">From the Rick &amp; Morty universe</span>
             </label>
             <label class="field">Look back (days)
-              <input id="days-input" name="days" type="number" value="30" min="1" max="90" required>
+              <input id="days-input" name="days" type="number" value="30">
               <span class="field-hint">Earthquake search window</span>
             </label>
           </div>
@@ -68,22 +68,42 @@
         <div class="results-heading"><div><div class="section-label">02 / YOUR FIELD REPORT</div><h2 id="report-title">Monterey, CA</h2></div><span class="report-time" id="report-time"></span></div>
         <div class="dashboard-grid">
           <article class="card weather-card">
-            <div class="card-top"><span class="card-kicker">ATMOSPHERE</span><span class="card-icon">☼</span></div>
+            <div class="card-top">
+              <div class="card-title">
+                <span class="card-kicker">ATMOSPHERE</span>
+                <a class="api-pill" href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">OPEN-METEO</a>
+              </div>
+              <span class="card-icon">☼</span></div>
             <div class="weather-main"><div class="temperature" id="temperature">--°</div><div><div class="weather-label" id="weather-label">Waiting for signal</div><div class="muted" id="coordinates">--</div></div></div>
             <div class="weather-stats"><div><span>WIND</span><strong id="wind">--</strong></div><div><span>HUMIDITY</span><strong id="humidity">--</strong></div><div><span>LOCAL TIME</span><strong id="local-time">--</strong></div></div>
           </article>
           <article class="card character-card">
-            <div class="card-top"><span class="card-kicker">TRAVEL COMPANION</span><span class="card-icon">✦</span></div>
+            <div class="card-top">
+              <div class="card-title">
+                <span class="card-kicker">TRAVEL COMPANION</span>
+                <span class="api-pill">RICK &amp; MORTY</span>
+              </div>
+              <span class="card-icon">✦</span></div>
             <div class="character-content" id="character-content"><div class="skeleton-avatar"></div><div><h3>Searching the multiverse...</h3><p class="muted">Your companion dossier will appear here.</p></div></div>
             <div class="character-meta" id="character-meta"></div>
           </article>
           <article class="card quake-card">
-            <div class="card-top"><span class="card-kicker">TECTONIC PULSE</span><span class="card-icon">⌁</span></div>
+            <div class="card-top">
+              <div class="card-title">
+                <span class="card-kicker">TECTONIC PULSE</span>
+                <span class="api-pill">USGS</span>
+              </div>
+              <span class="card-icon">⌁</span></div>
             <div class="quake-summary"><strong id="quake-count">--</strong><span>earthquakes<br>in the last <span id="quake-window">--</span> days</span></div>
             <div class="quake-list" id="quake-list"><p class="muted">Scanning the ground...</p></div>
           </article>
           <article class="card identity-card">
-            <div class="card-top"><span class="card-kicker">MISSION IDENTITY</span><span class="card-icon">◎</span></div>
+            <div class="card-top">
+              <div class="card-title">
+                <span class="card-kicker">MISSION IDENTITY</span>
+                <span class="api-pill">FAKER API</span>
+              </div>
+              <span class="card-icon">◎</span></div>
             <p class="identity-intro">A completely fictional identity for this expedition, generated on demand.</p>
             <div class="identity-name" id="identity-name">Awaiting launch</div>
             <div class="identity-details" id="identity-details">—</div>
