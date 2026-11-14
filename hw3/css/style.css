@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.page-shell {
+  max-width: 1180px;
+  margin: auto;
+  padding: 0 34px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 29px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+}
+
+.logo {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.logo-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: coral;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: #5fc57e;
+}
+
+.hero {
+  padding: 75px 0 63px;
+  max-width: 760px;
+}
+
+.eyebrow,
+.section-label,
+.card-kicker {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 19px 0 22px;
+  font-size: clamp(48px, 7vw, 84px);
+  line-height: 0.96;
+  letter-spacing: -0.065em;
+  font-weight: 600;
+}
+.hero h1 em {
+  color: coral;
+  font-style: normal;
+}
+
+.api-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 27px;
+}
+
+.api-pills span {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  color: var(--muted);
+  font:
+    10px "DM Mono",
+    monospace;
+}
+
+.markImg img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.correctAnswer {
+    color: green;
+}
+
+.incorrectAnswer {
+    color: red;
+}
+
+footer {
+    margin-top: 24px;
+    padding: 10px 16px;
+    color: #111;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+footer p {
+    margin: 4px 0;
+}
+
+footer img.footer-logo {
+    display: block;
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    margin: 10px auto 0;
+    border: 0;
+}
