@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/head') %>
+<body>
+    <h1>The Solar System</h1>
+    <%- include('partials/nav') %>
+
+    <main class="nasa-page">
+        <h2>NASA Picture of the Day</h2>
+        <h3><%= nasaPicture.title %></h3>
+        <p class="nasa-date"><%= nasaPicture.date %></p>
+
+        <% if (nasaPicture.media_type === 'image') { %>
+            <img class="nasa-image" src="<%= nasaPicture.url %>" alt="<%= nasaPicture.title %>">
+        <% } else { %>
+            <iframe class="nasa-video" src="<%= nasaPicture.url %>" title="<%= nasaPicture.title %>" allowfullscreen></iframe>
+        <% } %>
+
+        <p class="nasa-explanation"><%= nasaPicture.explanation %></p>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
