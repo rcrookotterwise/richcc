@@ -37,17 +37,21 @@ app.get('/mars', (req, res) => {
 
 app.get('/nasa', async (req, res) => {
    try {
-      const apiKey = "9mUzIkhlZCZaOoMfspg7jMmwZCZ4LiRHtkgkambD";
       const today = new Date().toISOString().split('T')[0];
       const response = await fetch(
-         `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${today}`
+         `https://science.nasa.gov/wp-json/wp/v2/apod-basic?date=${today}`
       );
 
       if (!response.ok) {
          throw new Error(`NASA API returned ${response.status}`);
       }
 
-      const nasaPicture = await response.json();
+      const results = await response.json();
+      if (!results.length) {
+         throw new Error('NASA API returned no picture for today');
+      }
+
+      const nasaPicture = results[0];
       res.render('nasa', { nasaPicture });
    } catch (error) {
       console.error('Unable to load NASA Picture of the Day:', error);
