@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/head') %>
+<style>
+  body {
+    background-image: url('<%= image %>');
+    background-size: cover;
+  }
+</style>
+<body>
+    <h1>The Solar System</h1>
+    <%- include('partials/nav') %>
+    <div class="solar-system">
+      <img src="img\openclipart-vectors-earth-2026315_1920.png" style="width: 500px; height: auto;"  alt="The Solar System">
+    </div>
+    <%- include('partials/footer') %>
+</body>
+</html>

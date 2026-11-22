@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/head') %>
+<body>
+    <h1>The Solar System</h1>
+    <%- include('partials/nav') %>
+
+    <main class="planet-page">
+        <h2>Planet <%= planetName %></h2>
+        <p class="planet-description"><%= planetInfo.description %></p>
+
+        <img class="planet-image"
+             src="<%= planetInfo.image %>"
+             alt="Image of planet <%= planetName %>">
+
+        <section class="planet-details">
+            <h3>Planet Details</h3>
+            <dl>
+                <div class="planet-detail">
+                    <dt>Distance From Sun:</dt>
+                    <dd><%= planetInfo.distanceFromSun %></dd>
+                </div>
+                <div class="planet-detail">
+                    <dt>Year Length:</dt>
+                    <dd><%= planetInfo.yearLength %></dd>
+                </div>
+                <div class="planet-detail">
+                    <dt>Radius:</dt>
+                    <dd><%= planetInfo.radius %> miles</dd>
+                </div>
+                <div class="planet-detail">
+                    <dt>Website:</dt>
+                    <dd>
+                        <a href="<%= planetInfo.websiteLink %>" target="_blank" rel="noopener noreferrer"><%= planetInfo.websiteLink %></a>
+                    </dd>
+                </div>
+                <div class="planet-detail">
+                    <dt>One Earth Day:</dt>
+                    <dd><%= planetInfo.oneEarthDay %></dd>
+                </div>
+                <div class="planet-detail">
+                    <dt>Moons:</dt>
+                    <dd><%= planetInfo.moons %></dd>
+                </div>
+            </dl>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
