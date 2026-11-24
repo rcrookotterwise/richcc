@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { title }) %>
+<body>
+    <header>
+        <p class="site-name">Operating Systems</p>
+        <%- include('partials/nav', { currentPage }) %>
+    </header>
+
+    <main>
+        <h1>Host OS</h1>
+        <p>These details are reported by the operating system running this app.</p>
+
+        <table>
+            <tr><th>Detail</th><th>Host information</th></tr>
+            <tr><td>Hostname</td><td><%= systemInfo.os.hostname || 'Not reported' %></td></tr>
+            <tr><td>Platform</td><td><%= systemInfo.os.platform || 'Not reported' %></td></tr>
+            <tr><td>Distribution</td><td><%= systemInfo.os.distro || 'Not reported' %></td></tr>
+            <tr><td>Version</td><td><%= systemInfo.os.release || 'Not reported' %></td></tr>
+            <tr><td>Kernel</td><td><%= systemInfo.os.kernel || 'Not reported' %></td></tr>
+            <tr><td>Architecture</td><td><%= systemInfo.os.arch || 'Not reported' %></td></tr>
+            <tr><td>Uptime</td><td><%= (systemInfo.time.uptime / 3600).toFixed(1) %> hours</td></tr>
+            <tr><td>CPU</td><td><%= systemInfo.cpu.brand || 'Not reported' %></td></tr>
+            <tr><td>CPU cores</td><td><%= systemInfo.cpu.physicalCores %> physical / <%= systemInfo.cpu.cores %> logical</td></tr>
+            <tr><td>CPU speed</td><td><%= systemInfo.cpu.speed %> GHz</td></tr>
+            <tr><td>Total memory</td><td><%= (systemInfo.memory.total / 1024 ** 3).toFixed(1) %> GB</td></tr>
+            <tr><td>Used memory</td><td><%= (systemInfo.memory.used / 1024 ** 3).toFixed(1) %> GB</td></tr>
+            <tr><td>Available memory</td><td><%= (systemInfo.memory.available / 1024 ** 3).toFixed(1) %> GB</td></tr>
+            <tr><td>Time zone</td><td><%= systemInfo.time.timezoneName || systemInfo.time.timezone %></td></tr>
+        </table>
+        <p><a href="/browser">Next: Your Browser Information</a></p>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

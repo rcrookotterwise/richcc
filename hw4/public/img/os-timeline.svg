@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" role="img" aria-labelledby="title desc">
+  <title id="title">Operating-system history timeline</title>
+  <desc id="desc">Four stages: batch computing in the 1950s, time-sharing in the 1960s and 1970s, personal computers in the 1980s and 1990s, and connected devices today.</desc>
+  <rect width="760" height="260" rx="18" fill="#f2f6f8"/>
+  <path d="M95 120H665" stroke="#174f78" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#fff" stroke="#174f78" stroke-width="5">
+    <circle cx="115" cy="120" r="17"/><circle cx="290" cy="120" r="17"/><circle cx="470" cy="120" r="17"/><circle cx="645" cy="120" r="17"/>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="115" y="70" font-size="19" font-weight="700" fill="#174f78">1950s</text><text x="115" y="165" font-size="15" fill="#333">Batch jobs</text>
+    <text x="290" y="70" font-size="19" font-weight="700" fill="#174f78">1960s–70s</text><text x="290" y="165" font-size="15" fill="#333">Time-sharing</text>
+    <text x="470" y="70" font-size="19" font-weight="700" fill="#174f78">1980s–90s</text><text x="470" y="165" font-size="15" fill="#333">Personal computers</text>
+    <text x="645" y="70" font-size="19" font-weight="700" fill="#174f78">Today</text><text x="645" y="165" font-size="15" fill="#333">Connected devices</text>
+    <text x="380" y="225" font-size="16" fill="#555">From shared machines to computers everywhere</text>
+  </g>
+</svg>

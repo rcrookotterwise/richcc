@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { title }) %>
+<body>
+    <header>
+        <p class="site-name">Operating Systems</p>
+        <%- include('partials/nav', { currentPage }) %>
+    </header>
+
+    <main>
+        <h1>Recent OS Release Lifecycles</h1>
+
+        <p>Support dates for recent Windows, Ubuntu, and macOS releases, provided by <a href="https://endoflife.date/">endoflife.date</a>.</p>
+        <table>
+            <tr><th>Operating system</th><th>Release</th><th>Latest version</th><th>Support status</th><th>End of life</th><th>Extended support</th></tr>
+            <% supportFamilies.forEach((family) => { %>
+                <% family.releases.forEach((release) => { %>
+                    <tr>
+                        <td><%= family.name %></td>
+                        <td><%= release.label %></td>
+                        <td><%= release.latest %></td>
+                        <td><%= release.supportStatus %></td>
+                        <td><%= release.eol %></td>
+                        <td><%= release.extendedSupport %></td>
+                    </tr>
+                <% }); %>
+            <% }); %>
+        </table>
+
+        <section class="book-source">
+            <h2>Book source</h2>
+            <p>For further reading: <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a> by Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau.</p>
+        </section>
+        <p><a href="/host-os">Next: Host OS</a></p>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
