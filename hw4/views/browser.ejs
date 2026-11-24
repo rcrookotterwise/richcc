@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { title }) %>
+<body>
+    <header>
+        <p class="site-name">Operating Systems</p>
+        <%- include('partials/nav', { currentPage }) %>
+    </header>
+
+    <main>
+        <h1>Browser</h1>
+        <p>These details are parsed from the browser's User-Agent header.</p>
+
+        <table>
+            <tr><th>Detail</th><th>Browser information</th></tr>
+            <tr><td>Browser</td><td><%= browserInfo.browser.name || 'Not detected' %></td></tr>
+            <tr><td>Version</td><td><%= browserInfo.browser.version || 'Not detected' %></td></tr>
+            <tr><td>Browser type</td><td><%= browserInfo.browser.type || 'Not detected' %></td></tr>
+            <tr><td>Rendering engine</td><td><%= [browserInfo.engine.name, browserInfo.engine.version].filter(Boolean).join(' ') || 'Not detected' %></td></tr>
+            <tr><td>Operating system</td><td><%= [browserInfo.os.name, browserInfo.os.version].filter(Boolean).join(' ') || 'Not detected' %></td></tr>
+            <tr><td>Device</td><td><%= [browserInfo.device.vendor, browserInfo.device.model, browserInfo.device.type].filter(Boolean).join(' ') || 'Not detected' %></td></tr>
+            <tr><td>CPU architecture</td><td><%= browserInfo.cpu.architecture || 'Not detected' %></td></tr>
+        </table>
+
+        <h2>User-Agent</h2>
+        <p><%= browserInfo.ua || 'Not provided' %></p>
+        <p><a href="/">Back to the overview</a></p>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
