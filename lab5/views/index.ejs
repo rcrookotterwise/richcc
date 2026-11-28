@@ -1,0 +1,67 @@
+<%- include('../views/partials/header') %>
+
+<body>
+<div class="page-shell">
+  <header class="site-header">
+    <a class="brand" href="/"><span class="brand-mark"></span>Quote Search</a>
+    <span>CSUMB / CST 336</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">A small archive of big ideas</div>
+      <h1>Find a <em>famous</em> quote.</h1>
+      <p class="hero-copy">Search the quote collection by a word or browse directly by author. Select an author in the results to learn more about their life and work.</p>
+    </section>
+
+    <section class="search-panel" aria-label="Quote search options">
+      <article class="search-card">
+        <div class="section-label">01 / Keyword</div>
+        <h2>Search the collection</h2>
+        <form action="/searchByKeyword">
+          <input type="text" name="keyword" placeholder="Try: life" required>
+          <button type="submit">Search</button>
+        </form>
+      </article>
+
+      <article class="search-card">
+        <div class="section-label">02 / Author</div>
+        <h2>Browse by author</h2>
+        <form action="/searchByAuthor">
+          <select name="authorId" required>
+            <% for (const author of authors) { %>
+              <option value="<%= author.authorId %>"><%= author.firstName %> <%= author.lastName %></option>
+            <% } %>
+          </select>
+          <button type="submit">Browse</button>
+        </form>
+      </article>
+
+      <article class="search-card">
+        <div class="section-label">03 / Category </div>
+        <h2>Browse by category</h2>
+        <form action="/searchByCategory">
+          <select name="categoryId" required>
+            <% for (const category of categories) { %>
+              <option value="<%= category.category %>"><%= category.category %></option>
+            <% } %>
+          </select>
+          <button type="submit">Browse</button>
+        </form>
+      </article>
+
+      <article class="search-card">
+        <div class="section-label">o4 / Likes</div>
+        <h2>Browse by likes</h2>
+        <form action="/searchByLikes">
+          Min:<input id="minLikes" type="number" name="minLikes" min="0" required>
+          Max:<input id="maxLikes" type="number" name="maxLikes" min="1" required>
+          <button type="submit">Browse</button>
+        </form>
+      </article>
+    </section>
+  </main>
+</div>
+<%- include('../views/partials/footer') %>
+</body>
+</html>

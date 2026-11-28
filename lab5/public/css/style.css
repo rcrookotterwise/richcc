@@ -1,0 +1,101 @@
+:root {
+    --ink: #17211c;
+    --muted: #68756e;
+    --paper: #f5f3ed;
+    --card: #fffefa;
+    --line: #dce1d9;
+    --accent: #ff806b;
+    --button: #c8f05a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 28px;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font-size: .8rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.brand { color: var(--ink); font-weight: bold; text-decoration: none; }
+.brand-mark { display: inline-block; width: 9px; height: 9px; margin-right: 7px; border-radius: 50%; background: var(--accent); }
+.hero { padding: 60px 0 35px; }
+.eyebrow, .section-label { color: var(--muted); font-size: .75rem; font-weight: bold; letter-spacing: .1em; text-transform: uppercase; }
+.hero h1 { margin: 14px 0; font-size: clamp(3rem, 8vw, 5.5rem); line-height: .95; }
+.hero h1 em { color: var(--accent); font-style: normal; }
+.hero-copy { max-width: 600px; color: var(--muted); font-size: 1.05rem; }
+
+.search-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 60px; }
+.search-card, .quote-card, .empty-state { border: 1px solid var(--line); background: var(--card); }
+.search-card { padding: 24px; }
+.search-card h2 { margin: 8px 0 18px; font-size: 1.3rem; }
+.search-card form { display: flex; gap: 8px; }
+.search-card input, .search-card select { min-width: 0; flex: 1; padding: 10px; border: 1px solid #aab4ac; background: transparent; font: inherit; }
+.search-card button { padding: 10px 14px; border: 0; background: var(--button); color: var(--ink); cursor: pointer; font-weight: bold; }
+.search-card button:hover { background: #b9e640; }
+
+.results-header { display: flex; justify-content: space-between; align-items: end; padding: 45px 0 15px; border-bottom: 1px solid var(--line); }
+.results-header h1 { margin: 8px 0 0; font-size: 3rem; }
+.result-count { color: var(--muted); font-size: .85rem; }
+.quote-list { display: grid; gap: 14px; margin: 18px 0 60px; }
+.quote-card { padding: 20px 22px; }
+.quote-text { margin-bottom: 8px; font-family: Georgia, serif; font-size: 1.35rem; }
+.quote-mark { color: var(--accent); font-size: 1.8rem; }
+.author-link { color: var(--muted); font-weight: bold; text-decoration: none; }
+.author-link:hover { color: var(--ink); text-decoration: underline; }
+.empty-state { padding: 24px; color: var(--muted); }
+
+.modal-content { border: 1px solid var(--ink); border-radius: 0; background: var(--card); }
+.author-profile { display: grid; grid-template-columns: 130px 1fr; gap: 18px; }
+.author-portrait { width: 130px; height: 160px; object-fit: cover; background: var(--paper); }
+.author-name { margin-bottom: 8px; }
+.author-profession { margin-bottom: 14px; color: var(--accent); font-weight: bold; }
+.author-details { display: grid; grid-template-columns: auto 1fr; gap: 5px 12px; margin: 0; font-size: .9rem; }
+.author-details dt { color: var(--muted); font-weight: bold; }
+.author-details dd { margin: 0; }
+.author-biography { margin-top: 18px; padding-top: 15px; border-top: 1px solid var(--line); color: var(--muted); }
+.site-footer { margin-top: 35px; padding: 20px 0 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; text-align: center; }
+
+@media (max-width: 700px) {
+    body { padding: 0 16px; }
+    .search-panel { grid-template-columns: 1fr; }
+    .search-card form { flex-direction: column; }
+    .search-card button { width: 100%; }
+    .results-header { display: block; }
+    .result-count { display: block; margin-top: 8px; }
+    .author-profile { grid-template-columns: 1fr; }
+}
+
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    color: #AAAAAA; /* Lighter text color for footer */
+    font-size: 0.75rem; /* make the text smaller and more subtle */
+    text-align: center;
+}
+
+footer img.footer-logo {
+    max-width: 200px; /* Limit the width of the footer logo */
+    height: auto; /* Maintain the aspect ratio of the logo */
+    border-radius: 8px; /* Add rounded corners to the footer logo */
+}
+
+.quote-details {
+    margin-top: 8px;
+    font-size: .9rem;
+    color: var(--muted);
+}
