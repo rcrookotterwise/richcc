@@ -1,0 +1,62 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+<div class="page-shell">
+    <header class="site-header">
+        <a class="brand" href="/"><span class="brand-mark"></span>Quote Search</a>
+        <span>Results</span>
+    </header>
+
+    <main>
+        <div class="results-header">
+            <div>
+                <div class="eyebrow">Search results</div>
+                <h1>Quotes found</h1>
+            </div>
+            <div class="result-count"><%= quotes.length %> matching quote(s)</div>
+        </div>
+
+        <section class="quote-list">
+            <% if (quotes.length === 0) { %>
+                <p class="empty-state">No quotes matched your search. Try another keyword.</p>
+            <% } %>
+            <% for (const quote of quotes) { %>
+                <article class="quote-card">
+                    <div class="quote-text"><span class="quote-mark">“</span><%= quote.quote %><span class="quote-mark">”</span></div>
+                    <a class="author-link" href="#" id="<%= quote.authorId %>">— <%= quote.firstName %> <%= quote.lastName %></a>
+                    <div class="quote-details">
+                        Likes: <%= quote.likes %> | Category: <%= quote.category %>
+                    </div>
+                </article>
+            <% } %>
+        </section>
+    </main>
+</div>
+
+    <!-- Modal for author information -->
+    <div class="modal fade" id="authorModal" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Author Information
+                    </h1>
+                    <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="authorInfo"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("partials/footer.ejs") %>
+    <script src="js/script.js"></script>
+</body>
+</html>
